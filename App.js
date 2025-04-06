@@ -1,8 +1,8 @@
 import * as React from 'react';
-import TelaLogin from './telas/TelaLogin';
-import TelaCadastro from  './telas/TelaCadastro';
-import TelaPerfil from './telas/TelaPerfil';
-import TelaListaUsuarios from './telas/TelaListaUsuarios'
+import TelaLogin from './src/telas/TelaLogin';
+import TelaCadastro from  './src/telas/TelaCadastro';
+import TelaPerfil from './src/telas/TelaPerfil';
+import TelaListaUsuarios from './src/telas/TelaListaUsuarios'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
