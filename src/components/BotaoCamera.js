@@ -19,7 +19,7 @@ function BotaoCamera(props) {
       >
     {showLogo && 
           <Image
-            source={require('../camera.png')}
+            source={require('../assets/camera.png')}
           />
         }
         <Text>{title}</Text>

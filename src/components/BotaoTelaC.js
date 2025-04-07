@@ -23,7 +23,7 @@ function BotaoTelaC(props) {
         {showLogo && 
           <Image
             style={{width: 20, height: 20, marginRight: 5}}
-            source={require('../google.png')}
+            source={require('../assets/google.png')}
           />
         }
         <Text style={{color:'#000000'}}>{title}</Text>
