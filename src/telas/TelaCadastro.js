@@ -1,111 +1,84 @@
 import React, {useState} from 'react';
-import {LinearGradient} from 'expo-linear-gradient';
-import { Text, View, StyleSheet,TextInput,Image, ImageBackground} from 'react-native';
+import { Text, View, TextInput, Image, ImageBackground} from 'react-native';
 import BotaoTelaC from '../components/BotaoTelaC'
-import estiloTelaCadastro from '../styles/estiloTelaCadastro';
+import estilo from '../styles/estiloTela';
+import estiloInput from '../styles/estiloTextInput';
 import usuarioService from '../services/UsuarioService';
 import background from '../assets/linhas.png';
 
-export default function TelaCadastro({navigation}) {
-
+export default function TelaCadastro({ navigation }) {
   const [nomeCompleto, setNomeCompleto] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const [confirmarSenha, setConfirmarSenha] = useState('');
 
-const criarConta = () => {
-  const newUser = {
-    nomeCompleto: nomeCompleto,
-    email: email,
-    senha: senha
+  const criarConta = () => {
+    if (senha !== confirmarSenha) {
+      alert('As senhas não coincidem!');
+      return;
+    }
+
+    const newUser = {
+      nomeCompleto: nomeCompleto,
+      email: email,
+      senha: senha
+    };
+    
+    usuarioService.adicionarUsuario(newUser);
+    usuarioService.setUsuarioCorrente(newUser);
+    navigation.push('Perfil');
   };
-  usuarioService.adicionarUsuario(newUser);
-  usuarioService.setUsuarioCorrente(newUser);
-  navigation.push('Perfil');
-};
 
   return (
-    <View style={styles.container}>         
-  <ImageBackground source={background} style={{flex: 1, resizeMode: 'cover', justifyContent: 'center', alignItems: 'center' }}>     
-    <View 
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'       
-      }}
-    >
-    <Image style={{width: 255, height: 105, marginRight: 5}}
-    source={require('../assets/Logo.png')}/>
-      <View
-       style={{
-            marginVertical: 40
-          }}
-          >
-          <Text
-        style={{
-              marginHorizontal: 25,
-              color: '#FFFFFF'
-               }}
-            >Nome completo:
-          </Text>
-        <TextInput
-          value={nomeCompleto}
-          onChangeText={newNomeCompleto => setNomeCompleto(newNomeCompleto)}
-          style={estiloTelaCadastro.EntradaTexto}
-        />
-          <Text
-            style={{
-              marginHorizontal: 25,
-              color: '#FFFFFF'
-            }}
-          >e-mail:
-          </Text>
-          <TextInput
-            value={email}
-            onChangeText={newEmail => setEmail(newEmail)}
-            style={estiloTelaCadastro.EntradaTexto} 
-          />
-          <Text
-            style={{
-              marginHorizontal: 25,
-              color: '#FFFFFF'
-               }}
-              >senha:
-          </Text>
-        <TextInput
-          value={senha}
-          onChangeText={newSenha => setSenha(newSenha)}
-          style={estiloTelaCadastro.EntradaTexto}
-          secureTextEntry
-        />
-         <Text
-        style={{
-              marginHorizontal: 25,
-              color: '#FFFFFF'
-               }}
-            >confirmar senha:
-         </Text>
-        <TextInput
-          style={estiloTelaCadastro.EntradaTexto}
-          secureTextEntry
-        />
-      </View>
-      <BotaoTelaC 
-        title="CRIAR CONTA" 
-       onPress={criarConta}
-      />      
-      <BotaoTelaC 
-        title="Entrar com o google" 
-        onPress={() => navigation.push('Login')} 
-        showLogo={true}        
-      />     
-      </View>    
-    </ImageBackground>
-      </View>
+    <View style={estilo.container}>
+      <ImageBackground source={background} style={estilo.background}>
+        <View style={estilo.inner}>
+          <Image style={estilo.logo} source={require('../assets/Logo.png')}/>
+
+          <View style={estilo.form}>
+            <Text style={estilo.label}>Nome completo:</Text>
+            <TextInput
+              style={estiloInput.caixaTexto}
+              placeholder="Digite seu nome"
+              placeholderTextColor="#ccc"
+              value={nomeCompleto}
+              onChangeText={setNomeCompleto}
+            />
+
+            <Text style={estilo.label}>E-mail:</Text>
+            <TextInput
+              style={estiloInput.caixaTexto}
+              placeholder="Digite seu e-mail"
+              placeholderTextColor="#ccc"
+              value={email}
+              onChangeText={setEmail}
+            />
+            
+            <Text style={estilo.label}>Senha:</Text>
+            <TextInput
+              style={estiloInput.caixaTexto}
+              placeholder="Digite sua senha"
+              placeholderTextColor="#ccc"
+              value={senha}
+              onChangeText={setSenha}
+              secureTextEntry
+            />
+            
+            <Text style={estilo.label}>Confirmar senha:</Text>
+            <TextInput
+              style={estiloInput.caixaTexto}
+              placeholder="Confirme sua senha"
+              placeholderTextColor="#ccc"
+              value={confirmarSenha}
+              onChangeText={setConfirmarSenha}
+              secureTextEntry
+            />
+          </View>
+
+          <BotaoTelaC title="CRIAR CONTA" onPress={criarConta}/>
+          <BotaoTelaC title="Entrar com o Google" onPress={() => navigation.push('Login')} showLogo={true}/>
+        </View>
+      </ImageBackground>
+    </View>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  
-  },
-}); 
