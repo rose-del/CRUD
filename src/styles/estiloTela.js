@@ -33,15 +33,5 @@ export default StyleSheet.create({
     marginBottom: 5,
     marginLeft: 10,
   },
-  
-  EntradaTexto: {            
-            borderColor: '#D9D9D9',
-            backgroundColor: '#D9D9D9',
-            borderWidth: 1,
-            borderRadius: 30,
-            paddingHorizontal: 10,
-            paddingVertical: 5,
-            width: 300,           
-          }
 
 });
