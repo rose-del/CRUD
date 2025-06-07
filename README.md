@@ -3,26 +3,25 @@
 Este é um projeto CRUD (Create, Read, Update, Delete) desenvolvido em React Native, onde é possível cadastrar usuários, visualizar uma lista de usuários cadastrados, e remover usuários. O armazenamento temporário é feito localmente.
 
 ## Estrutura do Projeto
+```
+📦 src
+├── 📁 assets -> Imagens do app
+├── 📁 components -> Componentes reutilizáveis (ex: BotaoArredondado)
+├── 📁 telas -> Telas principais (Login, Cadastro, Perfil, Lista)
+├── 📁 services -> Gerenciamento dos dados dos usuários na aplicação, simulando um pequeno "banco de dados em memória".
+├── 📁 styles -> Estilos organizados por tela
+├── App.js -> Entrada principal do app
+```
 
-   - service: Contém o arquivo UsuarioService.js, responsável por gerenciar os usuários.
-   - telas: Pasta que contém os arquivo das telas do aplicativo.
-   - componentes: Contém componentes (botões) reutilizáveis em várias telas do aplicativo.
-   - imagens e estilos: As imagens e estilos utilizadas no projeto estão localizadas diretamente na pasta do projeto CRUD. Embora essa não seja a prática recomendada de organização de arquivos, elas estão disponíveis na raiz do projeto para serem acessadas pelos componentes que as utilizam.
+## 🔍 Telas do App
 
-## Telas do Aplicativo
+- **Tela de Login**: Uma tela de login simples onde o usuário pode inserir seu e-mail e senha para acessar o aplicativo.
+- **Tela de Cadastro**: Uma tela de cadastro de usuário
+- **Tela de Perfil**: Nesta tela, o usuário pode visualizar e editar seu perfil. Além disso, há a opção de excluir a conta e visualizar a lista de usuários cadastrados.
+     - Obs.: **Exclusão de conta:** A funcionalidade de exclusão de conta não realiza uma exclusão real e definitiva dos dados. Atualmente, ela remove apenas o usuário corrente da lista local de usuários, e não há persistência em banco de dados ou armazenamento externo. Ou seja, os dados são mantidos apenas em memória durante a execução da aplicação.
+- **Tela de Lista de Usuários**: Esta tela exibe uma lista dos usuários cadastrados, permitindo assim visualizar todos os usuários registrados no sistema.
 
-- Tela de Login (TelaLogin.js)
-  
-    - Uma tela de login simples onde o usuário pode inserir seu e-mail e senha para acessar o aplicativo.
       
-- Tela de Perfil (TelaPerfil.js)
-  
-   - Nesta tela, o usuário pode visualizar e editar seu perfil. Além disso, há a opção de excluir a conta e visualizar a lista de usuários cadastrados.
-     
-- Tela de Lista de Usuários (TelaListaUsuarios.js)
-
-  - Esta tela exibe uma lista dos usuários cadastrados, permitindo assim visualizar todos os usuários registrados no sistema.
-  
 ## Componentes Reutilizáveis
 
   - BotaoArredondado: Um botão com um design arredondado.
